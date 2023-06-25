@@ -9,6 +9,7 @@ import {
 
 import db from '../../../firebaseConfig'
 import { collection, query, where, getDocs } from 'firebase/firestore'
+import { useDispatch, useSelector } from 'react-redux'
 
 import styles from '../../styles/style'
 
@@ -16,6 +17,7 @@ import CheckBox from '@react-native-community/checkbox'
 
 export default function Project({ navigation }) {
   const [projects, setProject] = useState([])
+  const cart = useSelector(state => state.cart.cart)
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -58,10 +60,16 @@ export default function Project({ navigation }) {
               </View>
               <View>
                 <Text>Materiais:</Text>
-                {item.materialsList.map((material, index) => (
+                {/* {item.materialsList.map((material, index) => (
                   <Text key={index}>{material}</Text>
-                ))}
+                ))} */}
               </View>
+              {cart.map((item, index) => (
+                <View key={index}>
+                  <Text>{item.name}</Text>
+                  <Text>{item.name}</Text>
+                </View>
+              ))}
             </View>
           )
         }}

@@ -63,6 +63,14 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  buttonAddMaterialInative: {
+    backgroundColor: '#f3f3f3',
+    width: 60,
+    height: 60,
+    borderRadius: 50,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 })
 

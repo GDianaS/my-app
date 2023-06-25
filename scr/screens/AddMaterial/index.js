@@ -11,11 +11,24 @@ import db from '../../../firebaseConfig'
 import { collection, query, where, getDocs } from 'firebase/firestore'
 
 import styles from '../../styles/style'
+import { useDispatch, useSelector } from 'react-redux'
+import { addToCard } from '../../../CartReducer'
+import MaterialItem from '../../components/MaterialItem'
+import CustomButton from '../../components/CustomButton'
 
 export default function AddMaterial({ navigation }) {
   const [material, setMaterial] = useState([])
 
   const [toggleCheckBox, setToggleCheckBox] = useState(false)
+
+  const cart = useSelector(state => state.cart.cart)
+  const materialCart = useSelector(state => state.material.material)
+  console.log(cart)
+  console.log('material array', cart)
+
+  const concluir = () => {
+    navigation.navigate('Project')
+  }
 
   useEffect(() => {
     const fetchMaterials = async () => {
@@ -50,20 +63,14 @@ export default function AddMaterial({ navigation }) {
         showsVerticalScrollIndicator={false}
         data={material}
         renderItem={({ item }) => {
-          return (
-            <View style={styles.containerAddMaterial}>
-              <TouchableOpacity style={styles.textMaterial}>
-                <Text>{item.collection}</Text>
-                <Text>{item.name}</Text>
-                <Text>{item.type}</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.buttonAddMaterial}>
-                <Text>+</Text>
-              </TouchableOpacity>
-            </View>
-          )
+          return <MaterialItem item={item} />
         }}
       />
+
+      <View>
+        <Text> Selecionados : {cart.length}</Text>
+      </View>
+      <CustomButton text="Concluir" onPress={concluir} />
     </SafeAreaView>
   )
 }
