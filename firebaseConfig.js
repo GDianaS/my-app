@@ -1,7 +1,8 @@
 import { firebase, initializeApp, getApps, getApp } from 'firebase/app'
 // import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 
-import { getDatabase } from 'firebase/database'
+//import { getDatabase } from 'firebase/database'
+import { getFirestore } from 'firebase/firestore'
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyDJBxYlauNGEPg4R3WMqBUfTNKf-YnAd4c',
@@ -14,29 +15,12 @@ export const firebaseConfig = {
   measurementId: 'G-Z2YE35GGD2'
 }
 
-getApps().length === 0 ? initializeApp(firebaseConfig) : getApp()
+// getApps().length === 0 ? initializeApp(firebaseConfig) : getApp()
 
-const db = getDatabase()
+// Initialize Firebase app
+const app = initializeApp(firebaseConfig)
 
-export { db }
+// Get Firestore database instance
+const db = getFirestore(app)
 
-// export const app = initializeApp(firebaseConfig)
-// const auth = getAuth(app)
-
-// const provider = new GoogleAuthProvider()
-
-// export const signInWithGoogle = () => {
-//   signInWithPopup(auth, provider)
-//     .then(result => {
-//       const name = result.user.displayName
-//       const email = result.user.email
-//       const profilePic = result.user.photoURL
-
-//       localStorage.setItem('name', name)
-//       localStorage.setItem('email', email)
-//       localStorage.setItem('profilePic', profilePic)
-//     })
-//     .catch(error => {
-//       console.log(error)
-//     })
-// }
+export default db

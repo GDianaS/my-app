@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   View,
   Text,
   ScrollView,
   SafeAreaView,
-  VirtualizedList
+  VirtualizedList,
+  Button
 } from 'react-native'
+
+import { uid } from 'uid'
 
 import DropDownPicker from 'react-native-dropdown-picker'
 
@@ -14,7 +17,7 @@ import CustomButton from '../../components/CustomButton'
 import styles from '../../styles/style'
 
 import { db } from '../../../firebaseConfig'
-import { ref, set } from 'firebase/database'
+import { onValue, ref, set, update } from 'firebase/database'
 
 export default function CreateMaterial({ navigation }) {
   const [type, setType] = useState('')
@@ -25,6 +28,8 @@ export default function CreateMaterial({ navigation }) {
   const [dimension, setDimension] = useState('')
   const [supliers, setSuplier] = useState('')
   const [url, setUrl] = useState('')
+
+  const [listMaterials, setListMaterials] = useState([])
 
   const [open, setOpen] = useState(false)
   const [value, setValue] = useState(null)
@@ -37,8 +42,10 @@ export default function CreateMaterial({ navigation }) {
     { label: 'Resistente ao Escorregamento', value: 'EXT' }
   ])
 
+  //create
   const addData = () => {
-    set(ref(db, 'materials/' + colection + name), {
+    const uuid = uid()
+    set(ref(db, 'materials/' + uuid), {
       type: type,
       name: name,
       colection: colection,
@@ -58,25 +65,34 @@ export default function CreateMaterial({ navigation }) {
     setUrl('')
   }
 
+  //read
+
+  function readData() {
+    const starCountRef = ref(db, 'materials/' + postId)
+    onValue(starCountRef, snapshot => {
+      const data = snapshot.val()
+    })
+  }
+
+  //update
+
+  //delete
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
         <Text style={styles.text}> Tipo</Text>
         <CustomInput text="Tipo" value={type} onChangeText={setType} />
-
         <Text style={styles.text}> Nome do Material</Text>
         <CustomInput text="Nome" value={name} onChangeText={setName} />
-
         <Text style={styles.text}> Coleção</Text>
         <CustomInput
           text="Coleção"
           value={colection}
           onChangeText={setColection}
         />
-
         <Text style={styles.text}> Marca </Text>
         <CustomInput text="Marca" value={brand} onChangeText={setBrand} />
-
         <Text style={styles.text}> Acabamento</Text>
         <CustomInput
           text="Acabamento"
@@ -91,25 +107,23 @@ export default function CreateMaterial({ navigation }) {
           setValue={setValue}
           setItems={setItems}
         /> */}
-
         <Text style={styles.text}> Dimensões</Text>
         <CustomInput
           text="Dimensões"
           value={dimension}
           onChangeText={setDimension}
         />
-
         <Text style={styles.text}> Fornecedores</Text>
         <CustomInput
           text="Fornecedores"
           value={supliers}
-          onChangeText={supliers}
+          onChangeText={setSuplier}
         />
-
         <Text style={styles.text}> URL</Text>
         <CustomInput text="url" value={url} onChangeText={setUrl} />
-
         <CustomButton text="Concluir" onPress={addData} />
+
+        <View></View>
       </ScrollView>
     </SafeAreaView>
   )
