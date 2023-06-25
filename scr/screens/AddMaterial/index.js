@@ -12,8 +12,10 @@ import { collection, query, where, getDocs } from 'firebase/firestore'
 
 import styles from '../../styles/style'
 
-export default function ListMaterials({ navigation }) {
+export default function AddMaterial({ navigation }) {
   const [material, setMaterial] = useState([])
+
+  const [toggleCheckBox, setToggleCheckBox] = useState(false)
 
   useEffect(() => {
     const fetchMaterials = async () => {
@@ -43,17 +45,20 @@ export default function ListMaterials({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.textTitle}> Banco de Dados de Materiais </Text>
+      <Text style={styles.textTitle}> Materiais Disponíveis </Text>
       <FlatList
         showsVerticalScrollIndicator={false}
         data={material}
         renderItem={({ item }) => {
           return (
-            <View style={styles.containerMaterial}>
-              <TouchableOpacity>
+            <View style={styles.containerAddMaterial}>
+              <TouchableOpacity style={styles.textMaterial}>
                 <Text>{item.collection}</Text>
                 <Text>{item.name}</Text>
                 <Text>{item.type}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.buttonAddMaterial}>
+                <Text>+</Text>
               </TouchableOpacity>
             </View>
           )

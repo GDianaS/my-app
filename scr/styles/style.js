@@ -15,6 +15,16 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 10
   },
+  containerAddMaterial: {
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    alignContent: 'space-between',
+    backgroundColor: '#f3f3f3',
+    minWidth: 325,
+    margin: 8,
+    padding: 20,
+    borderRadius: 10
+  },
   text: {
     textAlign: 'justify',
     fontSize: 16,
@@ -26,6 +36,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     margin: 16
+  },
+  textMaterial: {
+    marginRight: 130
   },
   iconAddButton: {
     color: '#ffffff',
@@ -39,6 +52,14 @@ const styles = StyleSheet.create({
     bottom: 30,
     left: 20,
     backgroundColor: '#aac16f',
+    borderRadius: 50,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  buttonAddMaterial: {
+    backgroundColor: 'blue',
+    width: 60,
+    height: 60,
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center'

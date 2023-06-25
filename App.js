@@ -9,6 +9,7 @@ import Home from './scr/screens/Home'
 import CreateMaterial from './scr/screens/CreateMaterial'
 import Project from './scr/screens/Project'
 import ListMaterials from './scr/screens/ListMaterials'
+import AddMaterial from './scr/screens/AddMaterial'
 
 const Stack = createNativeStackNavigator()
 
@@ -24,6 +25,7 @@ export default function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={Home} /> */}
         <Stack.Screen name="Project" component={Project} />
+        <Stack.Screen name="AddMaterial" component={AddMaterial} />
       </Stack.Navigator>
     </NavigationContainer>
   )
