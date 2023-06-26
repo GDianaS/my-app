@@ -36,7 +36,8 @@ const styles = StyleSheet.create({
   },
 
   textContainer: {
-    paddingLeft: 8
+    paddingLeft: 8,
+    paddingRight: 8
   }
 })
 

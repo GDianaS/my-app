@@ -27,6 +27,7 @@ const CustomButton = ({
 const styles = StyleSheet.create({
   container: {
     width: '100%',
+    minWidth: 100,
 
     padding: 15,
     marginVertical: 5,
@@ -37,6 +38,10 @@ const styles = StyleSheet.create({
 
   container_PRIMARY: {
     backgroundColor: '#aac16f'
+  },
+
+  container_SECUNDARY: {
+    backgroundColor: '#fec96b'
   },
 
   container_TERTIARY: {},

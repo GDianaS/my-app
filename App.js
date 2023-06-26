@@ -8,6 +8,7 @@ import LoadingScreen from './scr/screens/LoadingScreen'
 import Login from './scr/screens/Login'
 import Home from './scr/screens/Home'
 import CreateMaterial from './scr/screens/CreateMaterial'
+import CreateProject from './scr/screens/CreateProject'
 import Project from './scr/screens/Project'
 import ListMaterials from './scr/screens/ListMaterials'
 import AddMaterial from './scr/screens/AddMaterial'
@@ -25,10 +26,17 @@ export default function App() {
           component={LoadingScreen}
           options={{ title: 'Seja Bem-Vindo' }}
         />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Home" component={Home} /> */}
+        <Stack.Screen name="Login" component={Login} /> */}
+          <Stack.Screen name="Home" component={Home} />
+          {/* <Stack.Screen name="CreateProject" component={CreateProject} /> */}
           <Stack.Screen name="Project" component={Project} />
-          <Stack.Screen name="AddMaterial" component={AddMaterial} />
+          <Stack.Screen
+            name="AddMaterial"
+            component={AddMaterial}
+            options={{
+              headerTintColor: '#aac16f'
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

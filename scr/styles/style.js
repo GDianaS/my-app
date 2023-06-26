@@ -25,6 +25,26 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 10
   },
+  containerProject: {
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    alignContent: 'space-between',
+    backgroundColor: '#f3f3f3',
+    minWidth: 325,
+    margin: 8,
+    padding: 20,
+    borderRadius: 10,
+    alignItems: 'center'
+  },
+  containerCircle: {
+    height: 90,
+    width: 90,
+    backgroundColor: 'white',
+    borderRadius: 50,
+    marginRight: 30,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   text: {
     textAlign: 'justify',
     fontSize: 16,
@@ -65,7 +85,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   buttonAddMaterialInative: {
-    backgroundColor: '#f3f3f3',
+    backgroundColor: '#f5f5f5',
     width: 60,
     height: 60,
     borderRadius: 50,

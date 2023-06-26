@@ -13,8 +13,6 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import styles from '../../styles/style'
 
-import CheckBox from '@react-native-community/checkbox'
-
 export default function Project({ navigation }) {
   const [projects, setProject] = useState([])
   const cart = useSelector(state => state.cart.cart)
